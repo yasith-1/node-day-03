@@ -1,11 +1,12 @@
 // Stream (use to handle large file)
 
-const { error } = require('console');
+const { error, log } = require('console');
 const fs = require('fs');
+const { buffer } = require('stream/consumers');
 
 // without using pipe -----------------------------------------------------------------------------
 
-console.log('Start streaming file...');
+//console.log('Start streaming file...');
 
 // const readable = fs.createReadStream('./data/dataset.json', { encoding: 'utf-8' });
 // const writable = fs.createWriteStream('./data/copy-1.json');
@@ -27,11 +28,24 @@ console.log('Start streaming file...');
 
 // with using pipe -----------------------------------------------------------------------------
 
-const readable = fs.createReadStream('./data/dataset.json', { encoding: 'utf-8' });
-const writable = fs.createWriteStream('./data/copy-1.json');
+// const readable = fs.createReadStream('./data/dataset.json', { encoding: 'utf-8' });
+// const writable = fs.createWriteStream('./data/copy-1.json');
 
-readable.pipe(writable);
+// readable.pipe(writable);
 
-writable.on('finish', () => { console.log("File copied......") });
+// writable.on('finish', () => { console.log("File copied......") });
 
-readable.on('error', (err) => console.error(err));
+// readable.on('error', (err) => console.error(err));
+
+
+
+
+// Buffer (buffers is consist multiple binary sets)--------------------------------------------------
+
+const bufferdata = Buffer.from("Yooooooo Buddy... - Light wight ...");
+// Binary
+console.log(bufferdata);
+// String
+console.log(bufferdata.toString());
+
+
